@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bendita</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  </head>
+
+  <body class="bg-dark">
+    <%= yield %>
+  </body>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <% if alert %>
+    <script>
+      $.notify("<%= alert %>", "error");
+    </script>
+  <% end %>
+  <% if notice %>
+    <script>
+      $.notify("<%= notice %>", "success");
+    </script>
+  <% end %>
+  
+</html>

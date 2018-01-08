@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <a class="navbar-brand" href="/">Bendita Gravadora</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Home">
+      	<%= link_to authenticated_root_path, class: "nav-link" do %>
+      		<i class="fa fa-fw fa-home"></i>
+          <span class="nav-link-text">Home</span>
+      	<% end %>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Meus dados">
+        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <i class="fa fa-fw fa-user"></i>
+          <span class="nav-link-text">Meus Dados</span>
+        <% end %>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Meu Espaço">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMeuEspaco" data-parent="#exampleAccordion">
+          <i class="fa fa-fw fa-edit"></i>
+          <span class="nav-link-text">Meu Espaço</span>
+        </a>
+        <ul class="sidenav-second-level collapse" id="collapseMeuEspaco">
+          <li>
+            <a href="navbar.html">Minhas Letras</a>
+          </li>
+          <li>
+            <a href="cards.html">Meus Beats</a>
+          </li>
+          <li>
+            <a href="cards.html">Musicas Prontas</a>
+          </li>
+          <li>
+            <a href="cards.html">Videoclipes Prontos</a>
+          </li>
+        </ul>
+      </li>
+      <% if !current_user.comum_user? %>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Espaço do Admin">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseEspacoAdmin" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-address-card-o"></i>
+            <span class="nav-link-text">Espaço do Admin</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseEspacoAdmin">
+            <li>
+              <%= link_to "Cadastrar Usuário", new_user_registration_path %>
+            </li>
+            <li>
+              <a href="cards.html">Ver Usuários</a>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="navbar-nav sidenav-toggler">
+      <li class="nav-item">
+        <a class="nav-link text-center" id="sidenavToggler">
+          <i class="fa fa-fw fa-angle-left"></i>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+          <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

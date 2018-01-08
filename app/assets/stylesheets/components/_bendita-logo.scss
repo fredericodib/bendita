@@ -1,0 +1,17 @@
+.bendita-logo {
+	width: 30%;
+	margin: 0 auto;
+	display: block;
+}
+
+@media #{$small-only} {
+	.bendita-logo {
+		width: 100%;
+	}
+}
+
+@media #{$medium-only} {
+	.bendita-logo {
+		width: 60%;
+	}
+}

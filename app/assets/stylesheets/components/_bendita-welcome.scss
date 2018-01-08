@@ -1,0 +1,16 @@
+.bendita-welcome {
+	text-align: center;
+
+	&.-logo {
+		font-size: 3em;
+	}
+}
+
+@media #{$small-only} {
+	.bendita-welcome {
+
+		&.-logo {
+			font-size: 2em;
+		}
+	}
+}
