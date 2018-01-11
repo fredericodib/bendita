@@ -12,5 +12,7 @@
 //
 //= require rails-ujs
 //= require bootstrap/bootstrap.bundle
+//= require bootstrap/jquery.dataTables
+//= require bootstrap/dataTables.bootstrap4
 //= require bootstrap/sb-admin
-//= require_tree .
+//= require bootstrap/sb-admin-datatables.min

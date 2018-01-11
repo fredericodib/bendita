@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-8">
+		<h1><%= @lyric.name %></h1>
+
+		<br>
+		<%= markdown(@lyric.message) %>
+		<br>
+		<br>
+		<div>
+			<%= link_to "Editar", edit_lyric_path(@lyric), class: "btn btn-primary" %>
+			<%= link_to "Apagar", lyric_path(@lyric), method: "delete", class: "btn btn-danger pull-right", :data => {:confirm => 'Tem certeza que deseja apagar?'}%>
+		</div>
+		<br>
+		<%= link_to "Voltar", lyrics_path%>
+		<br>
+	</div>
+</div>

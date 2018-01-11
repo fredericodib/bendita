@@ -1,0 +1,24 @@
+<h1>Minhas Letras</h1>
+
+<%= link_to "Nova Letras", new_lyric_path, class: "btn btn-success pull-right" %>
+<br>
+<br>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Nome</th>
+        </tr>
+      </thead>
+      <tbody>
+      	<% @lyrics.each do |l| %>
+	        <tr>
+	          <td><%= link_to l.name, lyric_path(l) %></td>
+	        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>

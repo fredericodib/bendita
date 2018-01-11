@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   unauthenticated do
     root to: redirect('/users/sign_in'), as: :unauthenticated_root
   end
+
+  scope '/meu-espaco' do
+    resources :lyrics
+	end
 end

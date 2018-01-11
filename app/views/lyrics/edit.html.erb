@@ -1,0 +1,33 @@
+<h1>Editar <%= @lyric.name %></h1>
+
+<%= form_for @lyric do |f| %>
+	<% if @lyric.errors.any? %>
+        <% @lyric.errors.full_messages.each do |msg| %>
+          	<%= javascript_tag "$.notify('#{msg}')" %>
+        <% end %>
+    <% end %>
+
+	<div class="row">
+		<div class="col-md-8">
+			<div class="form-group">
+				<%= f.label :name, "Nome" %>
+		  		<%= f.text_field :name, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :message, "Letra" %>
+		  		<%= f.text_area :message, id: "textEditor" %>
+			</div>
+		  <%= f.submit "Salvar", class: "btn btn-success" %>
+		  <br>
+		  <br>
+		  <%= link_to "Voltar", lyrics_path%>
+		  <br>
+		</div>
+	</div>
+	
+<% end %>
+
+
+<script>
+	var simplemde = new SimpleMDE({ element: document.getElementById("textEditor") });
+</script>
