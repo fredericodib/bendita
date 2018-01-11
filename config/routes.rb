@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 	end
 
   get 'all_users' => 'users#index', as: :users
+
+  resources :events
+  get 'calendario' => 'events#calendar', as: :calendar
 end

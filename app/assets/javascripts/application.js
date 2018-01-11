@@ -18,3 +18,6 @@
 //= require bootstrap/sb-admin-datatables.min
 //= require moment
 //= require fullcalendar
+//= require bootstrap/daterangepicker
+//= require bootstrap/full_calendar
+//= require bootstrap/date_range_picker
