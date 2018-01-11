@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   scope '/meu-espaco' do
     resources :lyrics
 	end
+
+  get 'all_users' => 'users#index', as: :users
 end

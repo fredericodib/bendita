@@ -1,0 +1,31 @@
+<h1>Todos os Usuários</h1>
+
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Posição</th>
+          <th>Beats</th>
+          <th>Músicas</th>
+          <th>Videoclipes</th>
+        </tr>
+      </thead>
+      <tbody>
+      	<% @users.each do |u| %>
+	        <tr>
+	          <td><%= u.name %></td>
+            <td><%= u.email %></td>
+            <td><%= u.status %></td>
+            <td><%= link_to "Beats", lyrics_path %></td>
+            <td><%= link_to "Músicas", lyrics_path %></td>
+            <td><%= link_to "Videoclipes", lyrics_path %></td>
+	        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>

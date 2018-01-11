@@ -39,6 +39,8 @@ gem "font-awesome-rails"
 gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'redcarpet'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

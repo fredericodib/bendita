@@ -16,3 +16,5 @@
 //= require bootstrap/dataTables.bootstrap4
 //= require bootstrap/sb-admin
 //= require bootstrap/sb-admin-datatables.min
+//= require moment
+//= require fullcalendar
