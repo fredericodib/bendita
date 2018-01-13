@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get 'all_users' => 'users#index', as: :users
 
   resources :events
+  resources :beats, only: [:index, :create]
   get 'calendario' => 'events#calendar', as: :calendar
 end

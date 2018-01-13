@@ -21,3 +21,5 @@
 //= require bootstrap/daterangepicker
 //= require bootstrap/full_calendar
 //= require bootstrap/date_range_picker
+//= require bootstrap/form
+//= require bar
