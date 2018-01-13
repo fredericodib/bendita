@@ -22,6 +22,14 @@ class EventsController < ApplicationController
 	    @event.title = current_user.name if @event.title.blank?
 	    @event.color = "red" if (@event.color.blank? && current_user.full_admin?)
 	    @event.save
+
+	    if !current_user.full_admin?
+		    @admins = User.where(status: 'full_admin')
+		    CalendarMailer.create_event_notification_user(current_user, @event).deliver_later
+		    @admins.each do |a|
+		    	CalendarMailer.create_event_notification_admin(a, @event).deliver_later
+		    end
+		end
 	end
 
 	def update
@@ -31,11 +39,27 @@ class EventsController < ApplicationController
 		    @event.title = current_user.name if @event.title.blank?
 		    @event.color = "red" if (@event.color.blank? && current_user.full_admin?)
 		    @event.save
+
+		    if !@event.user.full_admin?
+			    @admins = User.where(status: 'full_admin')
+			    CalendarMailer.edit_event_notification(@event.user, @event, current_user).deliver_later
+			    @admins.each do |a|
+			    	CalendarMailer.edit_event_notification(a, @event, current_user).deliver_later
+			    end
+			end
 		end
 	end
 
 	def destroy
 		if (@event.user == current_user || current_user.full_admin?)
+			if !@event.user.full_admin?
+			    @admins = User.where(status: 'full_admin')
+			    CalendarMailer.delet_event_notification(@event.user, @event, current_user).deliver_later
+			    @admins.each do |a|
+			    	CalendarMailer.delet_event_notification(a, @event, current_user).deliver_later
+			    end
+			end
+			
 	    	@event.destroy
 	    end
 	end
