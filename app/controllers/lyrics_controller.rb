@@ -12,6 +12,7 @@ class LyricsController < ApplicationController
 		@lyric = Lyric.new(lyrics_params)
 		@lyric.user = current_user
 		if @lyric.save
+			Log.create(description: "#{current_user.name} adicionou uma nova letra: #{@lyric.name}")
 			redirect_to lyrics_path, notice: "Letra salva com sucesso!"
 		else
 			render :new
@@ -29,6 +30,7 @@ class LyricsController < ApplicationController
 	def update
 		@lyric = Lyric.find(params[:id])
 		if @lyric.update(lyrics_params)
+			Log.create(description: "#{current_user.name} editou uma letra antiga: #{@lyric.name}")
 			redirect_to lyrics_path, notice: "Letra editada com sucesso!"
 		else
 			render :edit
@@ -37,6 +39,7 @@ class LyricsController < ApplicationController
 
 	def destroy
 		@lyric = Lyric.find(params[:id])
+		Log.create(description: "#{current_user.name} apagou uma letra antiga: #{@lyric.name}")
 		@lyric.delete
 		redirect_to lyrics_path, notice: "Letra apagada com sucesso!"
 	end

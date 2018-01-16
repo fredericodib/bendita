@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'all_users' => 'users#index', as: :users
   get 'block_user/:id' => 'users#block', as: :block_users
   delete 'delete_user/:id' => 'users#destroy', as: :delete_users
+  get 'users_logs' => 'users#users_logs'
 
   resources :events
   resources :beats, only: [:index, :create]

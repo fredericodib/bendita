@@ -22,4 +22,8 @@ class UsersController < ApplicationController
 			redirect_to users_path, notice: "usuario desbloqueado com sucesso"
 		end
 	end
+
+	def users_logs
+		@logs = Log.all
+	end
 end
