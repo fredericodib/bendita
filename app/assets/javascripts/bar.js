@@ -3,7 +3,7 @@ $(function() {
     var bar = $('.progress-bar');
     var percent = $('#percent');
 
-    $('form').ajaxForm({
+    $('#ajaxform').ajaxForm({
         beforeSend: function() {
             var percentVal = '0%';
             bar.width(percentVal);

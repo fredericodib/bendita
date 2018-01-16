@@ -33,7 +33,7 @@
           <span aria-hidden="true">×</span>
         </button>
       </div>
-      <%= form_for @beat do |f| %>
+      <%= form_for @beat, :html => {:id => 'ajaxform' } do |f| %>
         <div class="modal-body">
 
           <% if @beat.errors.any? %>
