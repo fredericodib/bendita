@@ -16,19 +16,21 @@ class EventsController < ApplicationController
 	end
 
 	def create
-	    @event = Event.new(event_params)
-	    @event.user = current_user
-	    @event.title = "Ocupado" if (@event.title.blank? && current_user.full_admin?)
-	    @event.title = current_user.name if @event.title.blank?
-	    @event.color = "red" if (@event.color.blank? && current_user.full_admin?)
-	    @event.save
+		if !current_user.blocked
+		    @event = Event.new(event_params)
+		    @event.user = current_user
+		    @event.title = "Ocupado" if (@event.title.blank? && current_user.full_admin?)
+		    @event.title = current_user.name if @event.title.blank?
+		    @event.color = "red" if (@event.color.blank? && current_user.full_admin?)
+		    @event.save
 
-	    if !current_user.full_admin?
-		    @admins = User.where(status: 'full_admin')
-		    CalendarMailer.create_event_notification_user(current_user, @event).deliver_later
-		    @admins.each do |a|
-		    	CalendarMailer.create_event_notification_admin(a, @event).deliver_later
-		    end
+		    if !current_user.full_admin?
+			    @admins = User.where(status: 'full_admin')
+			    CalendarMailer.create_event_notification_user(current_user, @event).deliver_later
+			    @admins.each do |a|
+			    	CalendarMailer.create_event_notification_admin(a, @event).deliver_later
+			    end
+			end
 		end
 	end
 

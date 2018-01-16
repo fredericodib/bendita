@@ -8,7 +8,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= render 'form', event: @event %>
+        <% if !current_user.blocked %>
+          <%= render 'form', event: @event %>
+        <% else %>
+          <h4>Você está bloqueado de marcar novos horários!</h4>
+        <% end %>
       </div>
     </div>
   </div>

@@ -11,17 +11,31 @@
           <th>Beats</th>
           <th>Músicas</th>
           <th>Videoclipes</th>
+          <% if current_user.full_admin? %>
+            <th>Bloquear</th>
+            <th>Apagar</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
       	<% @users.each do |u| %>
 	        <tr>
-	          <td><%= u.name %></td>
-            <td><%= u.email %></td>
-            <td><%= u.status %></td>
-            <td><%= link_to "Beats", lyrics_path %></td>
-            <td><%= link_to "Músicas", lyrics_path %></td>
-            <td><%= link_to "Videoclipes", lyrics_path %></td>
+            <% if current_user != u %>
+  	          <td><%= u.name %></td>
+              <td><%= u.email %></td>
+              <td><%= u.status %></td>
+              <td><%= link_to "Beats", lyrics_path %></td>
+              <td><%= link_to "Músicas", lyrics_path %></td>
+              <td><%= link_to "Videoclipes", lyrics_path %></td>
+              <% if current_user.full_admin? %>
+                <% if !u.blocked %>
+                  <td><%= link_to "Bloquear", block_users_path(u), class: "btn btn-warning", :data => {:confirm => "Deseja bloquear o usuário #{u.name}?"} %></td>
+                <% else %>
+                  <td><%= link_to "Desbloquear", block_users_path(u), class: "btn btn-success", :data => {:confirm => "Deseja desbloquear o usuário #{u.name}?"} %></td>
+                <% end %>
+                <td><%= link_to "Apagar", delete_users_path(u), method: :delete, class: "btn btn-danger", :data => {:confirm => "Deseja deletar o usuário #{u.name}?"}%></td>
+              <% end %>
+            <% end %>
 	        </tr>
         <% end %>
       </tbody>
