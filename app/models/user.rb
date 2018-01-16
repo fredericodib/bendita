@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
     has_many :lyrics, dependent: :destroy
     has_many :beats, dependent: :destroy
-    enum status: [ :comum_user, :half_admin, :full_admin ]
+    enum status: [ :comum_user, :half_admin, :full_admin, :editor, :beatmaker ]
     validates :name, presence: true
 
 end

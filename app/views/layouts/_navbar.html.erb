@@ -43,7 +43,7 @@
           </li>
         </ul>
       </li>
-      <% if !current_user.comum_user? %>
+      <% if (current_user.full_admin? || current_user.half_admin?) %>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Espaço do Admin">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseEspacoAdmin" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-address-card-o"></i>
